@@ -64,15 +64,13 @@ Your agent will automatically deploy to Cloud Run.
 After pushing, your agent will be available at:
 
 ```
-https://adk-workshop-<your-name>-xxxxxxxx-uc.a.run.app/
+https://<your-name>-adk-workshop-773815123342.us-central1.run.app
 ```
 
 For example, branch `workshop/sam-gallagher` deploys to:
 ```
-https://adk-workshop-sam-gallagher-ctxeoi5cja-uc.a.run.app/
+https://sam-gallagher-adk-workshop-773815123342.us-central1.run.app
 ```
-
-Check the GitHub Actions output for your exact URL.
 
 ## Exercises
 

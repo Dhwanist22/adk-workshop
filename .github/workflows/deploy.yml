@@ -30,7 +30,7 @@ jobs:
           BRANCH_NAME=${GITHUB_REF#refs/heads/}
           # Remove 'workshop/' prefix and sanitize
           SERVICE_SUFFIX=$(echo "${BRANCH_NAME#workshop/}" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9-]/-/g' | cut -c1-40)
-          SERVICE_NAME="adk-workshop-${SERVICE_SUFFIX}"
+          SERVICE_NAME="${SERVICE_SUFFIX}-adk-workshop"
           echo "service_name=${SERVICE_NAME}" >> $GITHUB_OUTPUT
           echo "branch_name=${BRANCH_NAME}" >> $GITHUB_OUTPUT
           echo "Deploying branch '${BRANCH_NAME}' as service '${SERVICE_NAME}'"
@@ -125,7 +125,7 @@ jobs:
         run: |
           BRANCH_NAME=${{ github.event.ref }}
           SERVICE_SUFFIX=$(echo "${BRANCH_NAME#workshop/}" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9-]/-/g' | cut -c1-40)
-          SERVICE_NAME="adk-workshop-${SERVICE_SUFFIX}"
+          SERVICE_NAME="${SERVICE_SUFFIX}-adk-workshop"
           echo "Deleting service: ${SERVICE_NAME}"
           gcloud run services delete ${SERVICE_NAME} \
             --region=${{ env.REGION }} \
