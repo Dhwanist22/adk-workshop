@@ -9,6 +9,7 @@ Build AI agents with Google's Agent Development Kit! In this workshop, you'll pr
 | **Exercise 1** | Simple Single Agent | ADK basics, Agent class, deployment |
 | **Exercise 2** | Agent with Tools | Custom tools, Google Search, web scraping |
 | **Exercise 3** | Multi-Agent System | Agent hierarchies, delegation, orchestration |
+| **Exercise 4** | Evaluation & Benchmarking | Agent evaluation, metrics, prompt iteration |
 
 ## Prerequisites
 
@@ -100,6 +101,14 @@ research_orchestrator (root)
 ├── summarizer_agent
 └── report_agent
 ```
+
+### Exercise 4: Evaluation & Benchmarking
+
+Learn to evaluate agent performance using ADK's built-in evaluation framework.
+
+**Goal:** Run evaluations, interpret metrics, and improve agent behavior through prompt engineering.
+
+See [docs/exercise_4.md](docs/exercise_4.md) for detailed instructions.
 
 ## Resources
 
