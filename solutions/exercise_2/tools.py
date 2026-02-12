@@ -5,11 +5,11 @@ This module contains a custom tool that extends the agent's capabilities
 for fetching and reading web pages.
 """
 
-import aiohttp
+import requests
 from bs4 import BeautifulSoup
 
 
-async def fetch_webpage(url: str) -> dict:
+def fetch_webpage(url: str) -> dict:
     """
     Fetches the content of a webpage and extracts the main text.
 
@@ -23,35 +23,34 @@ async def fetch_webpage(url: str) -> dict:
         A dictionary with status and either the page content or an error message
     """
     try:
-        async with aiohttp.ClientSession() as session:
-            async with session.get(url, timeout=aiohttp.ClientTimeout(total=10)) as response:
-                if response.status != 200:
-                    return {
-                        "status": "error",
-                        "error_message": f"Failed to fetch URL. HTTP status: {response.status}"
-                    }
+        response = requests.get(url, timeout=10)
 
-                html = await response.text()
-                soup = BeautifulSoup(html, "html.parser")
+        if response.status_code != 200:
+            return {
+                "status": "error",
+                "error_message": f"Failed to fetch URL. HTTP status: {response.status_code}"
+            }
 
-                # Remove script and style elements
-                for element in soup(["script", "style", "nav", "footer", "header"]):
-                    element.decompose()
+        soup = BeautifulSoup(response.text, "html.parser")
 
-                # Get text content
-                text = soup.get_text(separator="\n", strip=True)
+        # Remove script and style elements
+        for element in soup(["script", "style", "nav", "footer", "header"]):
+            element.decompose()
 
-                # Truncate if too long
-                if len(text) > 10000:
-                    text = text[:10000] + "\n\n[Content truncated...]"
+        # Get text content
+        text = soup.get_text(separator="\n", strip=True)
 
-                return {
-                    "status": "success",
-                    "content": text,
-                    "title": soup.title.string if soup.title else "No title"
-                }
+        # Truncate if too long
+        if len(text) > 10000:
+            text = text[:10000] + "\n\n[Content truncated...]"
 
-    except aiohttp.ClientError as e:
+        return {
+            "status": "success",
+            "content": text,
+            "title": soup.title.string if soup.title else "No title"
+        }
+
+    except requests.RequestException as e:
         return {
             "status": "error",
             "error_message": f"Network error: {str(e)}"
