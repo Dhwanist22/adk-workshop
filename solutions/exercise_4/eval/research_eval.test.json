@@ -1,12 +1,10 @@
 {
   "eval_set_id": "research_agent_eval",
   "name": "Research Agent Evaluation Suite",
-  "description": "Test cases to verify the research orchestrator follows the correct workflow",
+  "description": "Test cases to verify the research orchestrator follows the correct workflow: research, verify, critique",
   "eval_cases": [
     {
       "eval_id": "basic_research_query",
-      "name": "Basic Research Query",
-      "description": "Verifies agent uses all three sub-agents in correct order for a simple research request",
       "conversation": [
         {
           "invocation_id": "turn_1",
@@ -18,16 +16,11 @@
               }
             ]
           },
-          "expected_intermediate_agents": [
-            {"name": "search_agent"},
-            {"name": "summarizer_agent"},
-            {"name": "report_agent"}
-          ],
-          "expected_response": {
+          "final_response": {
             "role": "model",
             "parts": [
               {
-                "text": "A report on renewable energy benefits including environmental advantages like reduced carbon emissions, economic benefits such as job creation and energy cost savings, and energy security through reduced dependence on fossil fuels. The report should be well-structured with sections and include source citations."
+                "text": "A report on renewable energy benefits including environmental advantages like reduced carbon emissions, economic benefits such as job creation and energy cost savings, and energy security through reduced dependence on fossil fuels. The report should note which claims were verified and include a section on limitations or open questions."
               }
             ]
           }
@@ -35,9 +28,7 @@
       ]
     },
     {
-      "eval_id": "multi_source_research",
-      "name": "Multi-Source Research",
-      "description": "Verifies agent properly analyzes multiple sources before reporting",
+      "eval_id": "comparison_research",
       "conversation": [
         {
           "invocation_id": "turn_1",
@@ -45,20 +36,15 @@
             "role": "user",
             "parts": [
               {
-                "text": "Compare electric vehicles vs hybrid vehicles. I need a summary of the pros and cons of each."
+                "text": "Compare electric vehicles vs hybrid vehicles. What are the pros and cons of each?"
               }
             ]
           },
-          "expected_intermediate_agents": [
-            {"name": "search_agent"},
-            {"name": "summarizer_agent"},
-            {"name": "report_agent"}
-          ],
-          "expected_response": {
+          "final_response": {
             "role": "model",
             "parts": [
               {
-                "text": "A comparison report covering electric vehicles (EVs) and hybrid vehicles. Should include pros and cons for each: EVs offer zero emissions, lower fuel costs, but have range limitations and charging infrastructure concerns. Hybrids provide better fuel economy than traditional cars, no range anxiety, but still use gasoline and have complex drivetrains. Report should be formatted as a comparison with clear sections or a table."
+                "text": "A comparison of electric and hybrid vehicles with verified claims about emissions, costs, and range. Should include fact-checked statistics and address limitations such as regional variation in electricity sources, evolving battery technology, and potential biases toward newer EV technology."
               }
             ]
           }
@@ -66,9 +52,7 @@
       ]
     },
     {
-      "eval_id": "executive_summary_request",
-      "name": "Executive Summary Request",
-      "description": "Verifies agent produces properly formatted executive summary through full workflow",
+      "eval_id": "trending_topic_research",
       "conversation": [
         {
           "invocation_id": "turn_1",
@@ -76,20 +60,15 @@
             "role": "user",
             "parts": [
               {
-                "text": "I need an executive summary on current trends in artificial intelligence for my team meeting."
+                "text": "What are the health effects of intermittent fasting? Give me a research summary."
               }
             ]
           },
-          "expected_intermediate_agents": [
-            {"name": "search_agent"},
-            {"name": "summarizer_agent"},
-            {"name": "report_agent"}
-          ],
-          "expected_response": {
+          "final_response": {
             "role": "model",
             "parts": [
               {
-                "text": "An executive summary covering current AI trends such as generative AI and large language models, AI in enterprise applications, advances in computer vision, ethical AI and regulation developments, and AI infrastructure and computing requirements. Should be concise, formatted for executive audience with key findings highlighted, and include sources."
+                "text": "A research summary on intermittent fasting health effects with verified claims about weight loss, metabolic health, and potential risks. Should clearly distinguish between well-established findings and preliminary research, note limitations such as study population biases, and flag open questions about long-term effects."
               }
             ]
           }

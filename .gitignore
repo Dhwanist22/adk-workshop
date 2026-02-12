@@ -19,6 +19,7 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+.adk
 
 # Virtual environments
 venv/
@@ -45,3 +46,5 @@ Thumbs.db
 # Project specific
 sessions.db
 *.db
+
+sessions/

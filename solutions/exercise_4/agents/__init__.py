@@ -1,5 +1,5 @@
-from .search_agent import search_agent
-from .summarizer_agent import summarizer_agent
-from .report_agent import report_agent
+from .researcher import researcher
+from .fact_checker import fact_checker
+from .critic import critic
 
-__all__ = ["search_agent", "summarizer_agent", "report_agent"]
+__all__ = ["researcher", "fact_checker", "critic"]
