@@ -10,7 +10,7 @@ from google.adk.agents import Agent
 
 critic = Agent(
     name="critic",
-    model="gemini-3-pro-preview",
+    model="gemini-2.0-flash",
     description="Reviews research findings to identify weaknesses, biases, and gaps. Give this agent the research and fact-check results to critique.",
     instruction="""You are a research critic. Your job is to make the research stronger
 by identifying its weaknesses.

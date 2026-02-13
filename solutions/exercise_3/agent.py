@@ -19,7 +19,7 @@ from .agents import researcher, fact_checker, critic
 
 root_agent = Agent(
     name="research_orchestrator",
-    model="gemini-3-pro-preview",
+    model="gemini-2.0-flash",
     description="A research orchestrator that coordinates a team of specialized agents.",
     instruction="""You lead a research team. For every research request, follow this
 exact workflow:

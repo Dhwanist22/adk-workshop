@@ -10,7 +10,7 @@ from google.adk.tools import google_search
 
 researcher = Agent(
     name="researcher",
-    model="gemini-3-pro-preview",
+    model="gemini-2.0-flash",
     description="Performs broad web research on a topic using Google Search. Give this agent a research query.",
     instruction="""You are a research specialist. Given a topic or question, use google_search
 to find comprehensive information.

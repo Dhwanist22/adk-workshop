@@ -11,7 +11,7 @@ from google.adk.tools import google_search
 
 fact_checker = Agent(
     name="fact_checker",
-    model="gemini-3-pro-preview",
+    model="gemini-2.0-flash",
     description="Independently verifies claims using Google Search. Give this agent the claims to verify.",
     instruction="""You are a fact checker. Your job is to independently verify claims
 from research findings by running your own searches.
