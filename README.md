@@ -7,9 +7,9 @@ Build AI agents with Google's Agent Development Kit! In this workshop, you'll pr
 | Exercise | Description | Skills Learned |
 |----------|-------------|----------------|
 | **Exercise 1** | Simple Single Agent | ADK basics, Agent class, deployment |
-| **Exercise 2** | Agent with Tools | Custom tools, Google Search, web scraping |
-| **Exercise 3** | Multi-Agent System | Agent hierarchies, delegation, orchestration |
-| **Exercise 4** | Evaluation & Benchmarking | Agent evaluation, metrics, prompt iteration |
+| **Exercise 2** | Agent with Tools | Custom function tools, web scraping |
+| **Exercise 3** | Multi-Agent Research Team | AgentTool pattern, orchestration, sub-agents |
+| **Exercise 4** | Agent Evaluation | Eval framework, rubric-based metrics, prompt engineering |
 
 ## Prerequisites
 
@@ -85,30 +85,30 @@ Create a basic research agent in `research_agent/agent.py`.
 
 ### Exercise 2: Agent with Tools
 
-Extend your agent with custom tools for web research.
+Extend your agent with a custom `fetch_webpage` tool for web research.
 
-**Goal:** Add `google_search` and custom tools like `fetch_webpage`.
+**Goal:** Build a custom function tool and attach it to an agent.
 
-### Exercise 3: Multi-Agent Hierarchy
+### Exercise 3: Multi-Agent Research Team
 
-Build a multi-agent system with specialized sub-agents.
+Build a research team using the `AgentTool` pattern where an orchestrator coordinates specialized sub-agents.
 
-**Goal:** Create an orchestrator that coordinates search, summarizer, and report agents.
+**Goal:** Create an orchestrator that delegates to researcher, fact_checker, and critic agents.
 
 ```
 research_orchestrator (root)
-├── search_agent
-├── summarizer_agent
-└── report_agent
+├── researcher     (AgentTool) — web research via Google Search
+├── fact_checker   (AgentTool) — independent claim verification
+└── critic         (AgentTool) — identifies weaknesses and gaps
 ```
 
-### Exercise 4: Evaluation & Benchmarking
+### Exercise 4: Agent Evaluation
 
-Learn to evaluate agent performance using ADK's built-in evaluation framework.
+Use ADK's evaluation framework to measure how prompt engineering affects agent quality. Run the same eval suite against a flawed agent and a fixed agent.
 
-**Goal:** Run evaluations, interpret metrics, and improve agent behavior through prompt engineering.
+**Goal:** Run `adk eval`, interpret rubric-based metrics, and see how prompt changes improve scores.
 
-See [docs/exercise_4.md](docs/exercise_4.md) for detailed instructions.
+See [solutions/exercise_4/INSTRUCTIONS.md](solutions/exercise_4/INSTRUCTIONS.md) for detailed instructions.
 
 ## Resources
 
